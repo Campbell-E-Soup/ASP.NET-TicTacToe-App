@@ -1,0 +1,44 @@
+html {
+  font-family: 'Segoe UI';
+}
+h1, h2, h4 {
+    text-align: center;
+}
+.title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: cornflowerblue;
+    color: white;
+    text-align: center;
+}
+.message {
+    background-color: forestgreen;
+    color: white;
+    text-align: center;
+}
+i {
+    text-align: center;
+}
+.btn {
+    width: 170px;
+    height: 170px;
+    font-size: 100px;
+}
+
+.space {
+    width: 176px;
+    height: 176px;
+}
+
+.board {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 552px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}

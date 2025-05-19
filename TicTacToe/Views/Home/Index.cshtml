@@ -1,0 +1,46 @@
+﻿@model GameState;
+@{
+    //h and w are always the same.
+    int Size = Model.Board.GetLength(0);
+    int SpaceSize = (int)Math.Floor((12.0 / Size));
+}
+@if (Model.Won != 0) {
+    if (Model.Won != -1) {
+        <h2 class="message rounded m-5 mb-2 mt-0 p-2"><i class="@(GameState.Icons[Model.Won])"></i> Won!</h2>
+    }
+    else
+    {
+        <h2 class="message rounded m-5 mb-2 mt-0 p-2">It's a tie!</h2>
+    }
+    <h4><a asp-action="Restart">New Game!</a></h4>
+}
+else
+{
+    <h2 class="turn m-5 mb-2 mt-0 p-2"><i class="@(GameState.Icons[Model.Turn])"></i>'s turn.</h2>
+}
+<div class="board container d-flex" align="center">
+    @for (int x = 0; x < Size; x++)
+    {
+        //create each col
+        <div class="row buffer" align="center">
+            @for (int y = 0; y < Size; y++) {
+                <div class="col-12 space">
+                    @if (Model.Board[x, y] > 0 || Model.Won != 0)
+                    {
+                        //disabled
+                        <button class="btn btn-outline-@(GameState.Colors[Model.Board[x, y]]) tictactoe" disabled>
+                            <i class="@(GameState.Icons[Model.Board[x,y]])"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        //enabled
+                        <a asp-action="Place" asp-controller="Home" asp-route-x="@x" asp-route-y="@y" class="btn btn-outline-@(GameState.Colors[Model.Board[x, y]]) tictactoe">
+                            <i class="@(GameState.Icons[Model.Board[x,y]])"></i>
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
